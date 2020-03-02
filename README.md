@@ -12,3 +12,4 @@ University of Southern California
 5. A simple graph is a graph that **contains no self-loops**.
 
 ## Q2 - MergeSort Visualization
+![A visualization of MergeSort on the string 'ilovecoding'](ee599-hw6-q2-mergesort.png)

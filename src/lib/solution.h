@@ -22,6 +22,8 @@ class Graph {
     public:
         std::map<int, std::set<int>> v_;
         Graph(std::map<int, std::set<int>> &vertices) : v_(vertices) {}
+
+        // member functions
         std::vector<int> dfs(int vertex);
 };
 #endif

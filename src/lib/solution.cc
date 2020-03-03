@@ -3,7 +3,6 @@
  
 
 /******************** QUESTION 3 ********************/
-
 // Runtime = &theta;(n + m) where n = # vertices & m = # edges --> O(n)
 std::vector<int> Graph::dfs(int vertex)
 {
@@ -38,3 +37,4 @@ std::vector<int> Graph::dfs(int vertex)
     return result;
 }
 
+/******************** QUESTION 4 ********************/

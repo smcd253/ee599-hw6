@@ -13,3 +13,7 @@ University of Southern California
 
 ## Q2 - MergeSort Visualization
 ![A visualization of MergeSort on the string 'ilovecoding'](ee599-hw6-q2-mergesort.png)
+
+```
+
+```

@@ -19,12 +19,15 @@
 
 /****** Problem 3 ******/
 class Graph {
+    private:
+        std::vector<int> dfs_helper(int vertex, std::vector<bool>& visited);
     public:
         std::map<int, std::set<int>> v_;
         Graph(std::map<int, std::set<int>> &vertices) : v_(vertices) {}
 
         // member functions
         std::vector<int> dfs(int vertex);
+        std::vector<int> dfs_all();
 };
 #endif
 

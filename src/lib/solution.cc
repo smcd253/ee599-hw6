@@ -4,12 +4,11 @@
 
 /******************** QUESTION 3 ********************/
 // Runtime = &theta;(n + m) where n = # vertices & m = # edges --> O(n)
-std::vector<int> Graph::dfs(int vertex)
+std::vector<int> Graph::dfs_helper(int vertex, std::vector<bool>& visited)
 {
     std::vector<int> result = {};
-    result.reserve(v_.size());
+    result.reserve(this->v_.size());
     std::stack<int> order_stack;
-    std::vector<bool> visited(this->v_.size(), false);
     int current_vertex = vertex;
 
     order_stack.push(current_vertex);
@@ -37,4 +36,26 @@ std::vector<int> Graph::dfs(int vertex)
     return result;
 }
 
+std::vector<int> Graph::dfs(int vertex)
+{
+    std::vector<int> result = {};
+    if(vertex < (int)this->v_.size())
+    {
+        std::vector<bool> visited(this->v_.size(), false);
+        result = dfs_helper(vertex, visited);
+    }
+    return result;
+}
+
 /******************** QUESTION 4 ********************/
+std::vector<int> Graph::dfs_all()
+{
+    std::vector<int> result = {};
+    std::vector<bool> visited(this->v_.size(), false);
+    for(int v = 0; v < (int)this->v_.size(); v++)
+    {
+        std::vector<int> temp = dfs_helper(v, visited);
+        result.insert(result.end(), temp.begin(), temp.end());
+    }
+    return result;
+}

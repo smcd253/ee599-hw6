@@ -17,7 +17,7 @@
 
 #include <queue>        // std::queue<TreeNode*>
 
-/****** Problem 3 ******/
+/****** Problems 3 & 4 ******/
 class Graph {
     private:
         std::vector<int> dfs_helper(int vertex, std::vector<bool>& visited);
@@ -28,6 +28,20 @@ class Graph {
         // member functions
         std::vector<int> dfs(int vertex);
         std::vector<int> dfs_all();
+};
+
+/****** Problem 5******/
+class PathFinder
+{
+    private:
+        std::vector<std::vector<int>> m;
+        std::vector<std::vector<bool>> v;
+    
+    public:
+        PathFinder(std::vector<std::vector<int>>& maze) : m(maze), 
+            v(maze.size(), std::vector<bool>(maze[0].size(), false)) {}
+
+        bool find_path(std::pair<int, int> start, std::pair <int, int> end);
 };
 #endif
 

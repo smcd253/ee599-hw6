@@ -61,3 +61,71 @@ std::vector<int> Graph::dfs_all()
     }
     return result;
 }
+
+/******************** QUESTION 5 ********************/
+bool find_path_helper(std::vector<std::vector<int>>& m, 
+        std::vector<std::vector<bool>>& v, 
+        std::pair<int, int> start, std::pair <int, int> end)
+{
+    bool result = false;
+    // update visited matrix
+    v[start.first][start.second] = true;
+    // return true if we've foudn the end
+    if(start == end)
+    {
+        return true;
+    }
+    // look search neighbors
+    std::pair<int, int> next_step;
+    // up
+    if(!result && start.first > 0)
+    {
+        if(!v[start.first - 1][start.second] && 
+            m[start.first - 1][start.second])
+        {
+            next_step = start;
+            next_step.first--;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
+    // down 
+    if(!result && start.first < (int)m.size())
+    {
+        if(!v[start.first + 1][start.second] && 
+            m[start.first + 1][start.second])
+        {
+            next_step = start;
+            next_step.first++;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
+    // left
+    if(!result && start.second > 0)
+    {
+        if(!v[start.first][start.second - 1] && 
+            m[start.first][start.second - 1])
+        {
+            next_step = start;
+            next_step.second--;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
+    // right
+    if(!result && start.second < (int)m.size())
+    {
+        if(!v[start.first][start.second + 1] && 
+            m[start.first][start.second + 1])
+        {
+            next_step = start;
+            next_step.second++;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
+    return result;
+}
+bool PathFinder::find_path(std::pair<int, int> start, std::pair <int, int> end)
+{
+    bool result = false;
+    result = find_path_helper(this->m, this->v, start, end);
+    return result;
+}

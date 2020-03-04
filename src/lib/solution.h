@@ -44,6 +44,12 @@ class PathFinder
         bool find_path(std::pair<int, int> start, std::pair <int, int> end);
 };
 
+/****** Problem 6 ******/
 
+class QuickSort
+{
+    public:
+        int partition(int* arr, int len, int i);
+}
 #endif
 

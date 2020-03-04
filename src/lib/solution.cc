@@ -123,9 +123,37 @@ bool find_path_helper(std::vector<std::vector<int>>& m,
     }
     return result;
 }
+
 bool PathFinder::find_path(std::pair<int, int> start, std::pair <int, int> end)
 {
     bool result = false;
     result = find_path_helper(this->m, this->v, start, end);
     return result;
+}
+
+/******************** QUESTION 6 ********************/
+void swap(int& a, int& b)
+{
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+int Solution::partition(int* arr, int len, int i)
+{
+  int pivot = *(arr + i);
+  swap(*(arr + i), *(arr + len - 1));
+  int k = 0;
+
+  for (int j = 0; j < len - 1; j++)
+  {
+    if(*(arr + j) < pivot)
+    {
+      printf("swap %d and %d \n",*(arr + j), *(arr + i));
+      swap(*(arr + k), *(arr + j));
+      k++;
+    }
+  }
+  swap(*(arr + k), *(arr + len - 1));
+  return k;
 }

@@ -40,7 +40,7 @@ std::vector<int> Graph::dfs_helper(int vertex, std::vector<bool>& visited)
 std::vector<int> Graph::dfs(int vertex)
 {
     std::vector<int> result = {};
-    if(vertex < (int)this->v_.size())
+    if(vertex < (int)this->v_.size() && vertex >= 0)
     {
         std::vector<bool> visited(this->v_.size(), false);
         result = dfs_helper(vertex, visited);
@@ -63,31 +63,25 @@ std::vector<int> Graph::dfs_all()
 }
 
 /******************** QUESTION 5 ********************/
+// recursive depth first search of a maze
 bool find_path_helper(std::vector<std::vector<int>>& m, 
         std::vector<std::vector<bool>>& v, 
         std::pair<int, int> start, std::pair <int, int> end)
 {
     bool result = false;
+
     // update visited matrix
     v[start.first][start.second] = true;
+
     // return true if we've foudn the end
     if(start == end)
     {
         return true;
     }
-    // look search neighbors
+
+    // search neighbors
     std::pair<int, int> next_step;
-    // up
-    if(!result && start.first > 0)
-    {
-        if(!v[start.first - 1][start.second] && 
-            m[start.first - 1][start.second])
-        {
-            next_step = start;
-            next_step.first--;
-            result = find_path_helper(m, v, next_step, end);
-        }
-    }
+
     // down 
     if(!result && start.first < (int)m.size())
     {
@@ -99,17 +93,7 @@ bool find_path_helper(std::vector<std::vector<int>>& m,
             result = find_path_helper(m, v, next_step, end);
         }
     }
-    // left
-    if(!result && start.second > 0)
-    {
-        if(!v[start.first][start.second - 1] && 
-            m[start.first][start.second - 1])
-        {
-            next_step = start;
-            next_step.second--;
-            result = find_path_helper(m, v, next_step, end);
-        }
-    }
+
     // right
     if(!result && start.second < (int)m.size())
     {
@@ -121,13 +105,44 @@ bool find_path_helper(std::vector<std::vector<int>>& m,
             result = find_path_helper(m, v, next_step, end);
         }
     }
+
+    // up
+    if(!result && start.first > 0)
+    {
+        if(!v[start.first - 1][start.second] && 
+            m[start.first - 1][start.second])
+        {
+            next_step = start;
+            next_step.first--;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
+
+    // left
+    if(!result && start.second > 0)
+    {
+        if(!v[start.first][start.second - 1] && 
+            m[start.first][start.second - 1])
+        {
+            next_step = start;
+            next_step.second--;
+            result = find_path_helper(m, v, next_step, end);
+        }
+    }
     return result;
 }
 
+// Runtime = &theta;(n + m) where n = height of maze & m = width of maze --> O(n)
 bool PathFinder::find_path(std::pair<int, int> start, std::pair <int, int> end)
 {
     bool result = false;
-    result = find_path_helper(this->m, this->v, start, end);
+    if(start.first >= 0 && start.first < (int)this->m.size() &&
+        start.second >= 0 && start.second < (int)this->m[0].size() &&
+        end.first >= 0 && end.first < (int)this->m.size() &&
+        end.second >= 0 && end.second < (int)this->m[0].size())
+    {
+        result = find_path_helper(this->m, this->v, start, end);
+    }
     return result;
 }
 
@@ -139,20 +154,29 @@ void swap(int& a, int& b)
   b = temp;
 }
 
-int QuickSort::partition(std::vector<int>& arr, int i)
+// Runtime = &theta;(6 + 3*n + 5) --> O(n)
+std::vector<int> QuickSort::partition(std::vector<int>& arr, int i)
 {
-  int pivot = arr[i];
-  swap(arr[i], arr[(int)arr.size() - 1]);
-  int k = 0;
-
-  for (int j = 0; j < (int)arr.size() - 1; j++)
-  {
-    if(arr[j] < pivot)
+    if(i < (int)arr.size() && i >= 0)
     {
-      swap(arr[k], arr[j]);
-      k++;
+        int pivot = arr[i];
+        swap(arr[i], arr[(int)arr.size() - 1]);
+        int k = 0;
+
+        for (int j = 0; j < (int)arr.size() - 1; j++)
+        {
+            if(arr[j] < pivot)
+            {
+            swap(arr[k], arr[j]);
+            k++;
+            }
+        }
+        swap(arr[k], arr[(int)arr.size() - 1]);
+        return arr;
+    }   
+    else
+    {
+        return {};
     }
-  }
-  swap(arr[k], arr[(int)arr.size() - 1]);
-  return arr[k];
+    
 }

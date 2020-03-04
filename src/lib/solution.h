@@ -46,11 +46,10 @@ class PathFinder
 };
 
 /****** Problem 6 ******/
-
 class QuickSort
 {
     public:
-        int partition(std::vector<int>& arr, int i);
+        std::vector<int> partition(std::vector<int>& arr, int i);
 };
 
 #endif

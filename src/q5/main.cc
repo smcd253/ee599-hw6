@@ -20,5 +20,4 @@ int main() {
     printf("Is there a path from (0, 0) to (4, 4)?\n");
     result = pf.find_path(start, dest2);
     printf("Answer: %s\n", result ? "Yes" : "No");
-    printf("\n");
 }

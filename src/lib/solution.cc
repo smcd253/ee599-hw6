@@ -139,21 +139,20 @@ void swap(int& a, int& b)
   b = temp;
 }
 
-int Solution::partition(int* arr, int len, int i)
+int QuickSort::partition(std::vector<int>& arr, int i)
 {
-  int pivot = *(arr + i);
-  swap(*(arr + i), *(arr + len - 1));
+  int pivot = arr[i];
+  swap(arr[i], arr[(int)arr.size() - 1]);
   int k = 0;
 
-  for (int j = 0; j < len - 1; j++)
+  for (int j = 0; j < (int)arr.size() - 1; j++)
   {
-    if(*(arr + j) < pivot)
+    if(arr[j] < pivot)
     {
-      printf("swap %d and %d \n",*(arr + j), *(arr + i));
-      swap(*(arr + k), *(arr + j));
+      swap(arr[k], arr[j]);
       k++;
     }
   }
-  swap(*(arr + k), *(arr + len - 1));
-  return k;
+  swap(arr[k], arr[(int)arr.size() - 1]);
+  return arr[k];
 }

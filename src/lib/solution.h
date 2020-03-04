@@ -18,7 +18,8 @@
 #include <queue>        // std::queue<TreeNode*>
 
 /****** Problems 3 & 4 ******/
-class Graph {
+class Graph 
+{
     private:
         std::vector<int> dfs_helper(int vertex, std::vector<bool>& visited);
     public:
@@ -49,7 +50,8 @@ class PathFinder
 class QuickSort
 {
     public:
-        int partition(int* arr, int len, int i);
-}
+        int partition(std::vector<int>& arr, int i);
+};
+
 #endif
 

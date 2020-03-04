@@ -4,12 +4,12 @@
 int main() {
     QuickSort qs;
 
-    int input[10] = {8, 3, 0, 1, 2, 9, 6, 7, 4, 5};
+    std::vector<int> input = {9, 7, 5, 11, 12, 2, 14, 3, 10, 6};
 
-    int p = qs.partition(input, sizeof(input)/sizeof(int), 6);
+    int p = qs.partition(input, 9);
 
     printf("output = {");
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < (int)input.size(); i++)
     {
         if(i < 9)
         {

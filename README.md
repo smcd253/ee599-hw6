@@ -1,7 +1,7 @@
 # EE599 HW6 - Graphs and Various Sorting Algorithms
 
 Created - Spencer McDonough : 02/27/2020<br>
-Last Modified - Spencer McDonough : 02/27/2020<br>
+Last Modified - Spencer McDonough : 03/04/2020<br>
 University of Southern California
 
 ## Q1 - Graph-Related Facts

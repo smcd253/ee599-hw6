@@ -23,8 +23,8 @@ std::vector<int> Graph::dfs_helper(int vertex, std::vector<bool>& visited)
             visited[current_vertex] = true;
         }
 
-        std::set<int>::iterator it;
-        for (it = this->v_[current_vertex].begin(); it != this->v_[current_vertex].end(); ++it)
+        std::set<int>::reverse_iterator it;
+        for (it = this->v_[current_vertex].rbegin(); it != this->v_[current_vertex].rend(); ++it)
         {
             if(!visited[*it])
             {
@@ -36,6 +36,7 @@ std::vector<int> Graph::dfs_helper(int vertex, std::vector<bool>& visited)
     return result;
 }
 
+// Runtime = &theta;(n + m) where n = # vertices & m = # edges --> O(n)
 std::vector<int> Graph::dfs(int vertex)
 {
     std::vector<int> result = {};
@@ -48,6 +49,7 @@ std::vector<int> Graph::dfs(int vertex)
 }
 
 /******************** QUESTION 4 ********************/
+// Runtime = &theta;(n*(n + m)) where n = # vertices & m = # edges --> O(n^2)
 std::vector<int> Graph::dfs_all()
 {
     std::vector<int> result = {};

@@ -1,7 +1,5 @@
 #include "src/lib/solution.h"
 #include "gtest/gtest.h"
-#include <climits>      // INT_MAX (linux)
-#include <limits>       // INT_MAX (darwin)
 #include <string>       // std::string
 #include <iostream>     // CaptureStdout
 

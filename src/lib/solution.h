@@ -1,21 +1,13 @@
 #ifndef TEMPLATE_SOLUTION_H
 #define TEMPLATE_SOLUTION_H
 
-#include <iostream>
+#include <iostream>     // for debugging
 #include <vector>       // std::vector<int>
 #include <stack>        // std::order_stack<int>
 #include <set>          // std::set<int>
 #include <map>          // std::map<int std::set<int>>
 #include <iterator>     // std::set::iterator
 
-#ifdef __linux__ 
-    #include <climits>      // INT_MAX (linux)
-
-#elif __APPLE__
-    #include <limits>       // INT_MAX (darwin)
-#endif
-
-#include <queue>        // std::queue<TreeNode*>
 
 /****** Problems 3 & 4 ******/
 class Graph 

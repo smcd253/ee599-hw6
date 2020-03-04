@@ -30,7 +30,7 @@ class Graph {
         std::vector<int> dfs_all();
 };
 
-/****** Problem 5******/
+/****** Problem 5 ******/
 class PathFinder
 {
     private:
@@ -43,5 +43,7 @@ class PathFinder
 
         bool find_path(std::pair<int, int> start, std::pair <int, int> end);
 };
+
+
 #endif
 
